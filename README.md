@@ -1,2 +1,2 @@
-# hello-world
+# showgirl-mini
 test
