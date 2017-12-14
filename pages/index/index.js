@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const request = require('../../utils/request')
 
 Page({
   data: {
@@ -11,9 +12,10 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  enterRoom: function() {
+  enterAlbum: function(e) {
+    let url = '../detail/detail?id=' + e.currentTarget.dataset.id + '&title=' + e.currentTarget.dataset.title;
     wx.navigateTo({
-      url: '../detail/detail',
+      url: url
     })
   },
   //事件处理函数
@@ -24,7 +26,7 @@ Page({
   },
   onLoad: function () {
     wx.request({
-      url: 'http://www.daybreakhouse.cn/v2.0/recommend/queryrecommendlist', 
+      url: request.queryrecommendlist, 
       data: {
         QueryStartPos: 0,
         QueryNumber: 10

@@ -10,8 +10,8 @@
       </view>
       <swiper class="slide-wrap" indicator-dots autoplay circular>
         <block wx:for="{{BannerList}}" wx:key="{{index}}">
-          <swiper-item>
-            <image src="{{item.Url[0]}}" class="slide-image" mode="aspectFill" />
+          <swiper-item bindtap="enterAlbum" data-id="{{item.StyleID}}" data-title="{{item.AlbumName}}">
+            <image src="{{item.Url}}" class="slide-image" mode="aspectFill" />
           </swiper-item>
         </block>
       </swiper>
@@ -28,13 +28,13 @@
     </view>
     <view class="pic-list">
       <block wx:for="{{RecommendImageList}}" wx:key="{{index}}">
-          <view class="zhubo-item" bindtap="enterRoom" data-url="{{item.Url}}">
+          <view class="zhubo-item" bindtap="enterAlbum" data-id="{{item.StyleID}}" data-title="{{item.AlbumName}}">
             <view class="zhubo-container">
-              <image class="zhubo-bigpic" src="{{item.Url[0]}}" mode="aspectFill" style="height: {{height}}px"></image>
+              <image class="zhubo-bigpic" src="{{item.Url}}" mode="aspectFill" style="height: {{height}}px"></image>
             </view>
             <view class="zhubo-info">
               <view class="zhubo-icon">
-                <image class="zhubo-icon-img" src="{{item.Url[0]}}"></image>
+                <image class="zhubo-icon-img" src="{{item.Url}}"></image>
               </view>
               <text class="zhubo-desc">{{item.AlbumName}}</text>
             </view>
