@@ -10,5 +10,23 @@
     "navigationBarTitleText": "showgirl",
     "navigationBarTextStyle":"black"
   },
+  "tabBar": {
+    "selectedColor": "#DC143C",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./images/home.png",
+        "selectedIconPath": "./images/home-active.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "./images/my.png",
+        "selectedIconPath": "./images/my-active.png"
+      }
+    ]
+  },
   "debug": true
 }

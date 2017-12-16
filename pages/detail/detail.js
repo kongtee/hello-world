@@ -1,7 +1,7 @@
 //detail.js
 //获取应用实例
 const app = getApp()
-const request = require('../../utils/request')
+const recommend = require('../../common/request/recommend')
 
 Page({
   data: {
@@ -21,7 +21,7 @@ Page({
     console.log('onload:', option);
     let id = option.id || '';
     wx.request({
-      url: request.styleimagelist,
+      url: recommend.styleimagelist,
       data: {
         StyleID: id
       },

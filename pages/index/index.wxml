@@ -21,7 +21,7 @@
     <view class="catogary">
       <view class="catogary-wrap">
         <view class="split"></view>
-        <text>推荐美女</text>
+        <text class="title">推荐美女</text>
         <view class="split"></view>
       </view>
       <view class="catogary-icon"><text>◇◇◇</text></view>

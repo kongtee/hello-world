@@ -63,9 +63,13 @@
 
 .main .catogary .split {
   width: 70px;
-  height: 2rpx;
+  height: 1px;
   background-color: #DC143C;
   margin: 0 10px;
+}
+
+.main .catogary .title {
+  width: 100px;
 }
 
 .main .catogary .catogary-icon {

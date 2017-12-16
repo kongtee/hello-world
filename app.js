@@ -1,4 +1,5 @@
 //app.js
+const account = require('./common/request/account')
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -9,7 +10,26 @@ App({
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log('login1:', res);
+        //发送 res.code 到后台换取 openId, sessionKey, unionId
+        wx.request({
+          url: account.thirdpartywxlogin,
+          data: {
+            code: res.code
+          },
+          method: 'POST',
+          success: (res) => {
+            console.log('login:',res.data);
+            // let resData = res.data || {};
+            // if (resData.RspHeader && resData.RspHeader.ErrNo == 200) {
+            //   let rspJson = resData.RspJson || [];
+            //   this.setData({
+            //     BannerList: rspJson.BannerList,
+            //     RecommendImageList: rspJson.RecommendImageList
+            //   });
+            // }
+          }
+        })
       }
     })
     // 获取用户信息

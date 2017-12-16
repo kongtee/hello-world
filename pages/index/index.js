@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-const request = require('../../utils/request')
+const recommend = require('../../common/request/recommend')
 
 Page({
   data: {
@@ -20,7 +20,7 @@ Page({
   },
   onLoad: function () {
     wx.request({
-      url: request.queryrecommendlist, 
+      url: recommend.queryrecommendlist, 
       data: {
         QueryStartPos: 0,
         QueryNumber: 10
