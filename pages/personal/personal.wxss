@@ -1,0 +1,49 @@
+/**index.wxss**/
+.bg {
+  background-color: #DC143C;
+  margin: 0;
+  padding: 0;
+  width: 750rpx;
+  height: 375rpx;
+  border-radius: 0 0 375rpx 375rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:-1;
+}
+
+.userinfo {
+  margin:25px auto;
+  background-color:#fff;
+  border-radius:5px;
+  width:290px;
+  height:180px;
+  box-shadow:0 2rpx 5rpx #adadad;
+  box-sizing:border-box;
+  display:flex;
+  padding:10px;
+  position: relative;
+}
+
+.userinfo .userinfo-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  display: inline-block;
+}
+
+.userinfo .userinfo-nickname {
+  display: inline-block;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 10px;
+}
+
+.userinfo .userinfo-card {
+  width: 150px;
+  height: 132px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
