@@ -5,8 +5,8 @@ const recommend = require('../../common/request/recommend')
 
 Page({
   data: {
-    headerBg: 'http://r.ezenlive.cn/ksyunadmin/5a1e8456ef3c733349.jpeg',
-    BannerList: [],
+    BannerImage: {},
+    NewImageList: [],
     RecommendImageList: [],
     userInfo: {},
     hasUserInfo: false,
@@ -19,6 +19,7 @@ Page({
     })
   },
   onLoad: function () {
+    //获取图片列表
     wx.request({
       url: recommend.queryrecommendlist, 
       data: {
@@ -28,13 +29,32 @@ Page({
       method: 'POST',
       success: (res) => {
         console.log(res.data);
-        let resData = res.data || {};
+        let resData = res.data || {}
         if (resData.RspHeader && resData.RspHeader.ErrNo == 200) {
-          let rspJson = resData.RspJson || [];
-          this.setData({
-            BannerList: rspJson.BannerList,
-            RecommendImageList: rspJson.RecommendImageList
-          });
+          let rspJson = resData.RspJson || []
+          let query = wx.createSelectorQuery()
+          let dom = query.select('#headerImgWrap').boundingClientRect((rect) => {
+            let systemInfo = app.globalData.systemInfo
+            let picParam = '?x-oss-process=image/resize,m_lfit,h_' + (rect.height * systemInfo.pixelRatio) + ',w_' + (rect.width * systemInfo.pixelRatio)
+            //处理banner列表
+            let bannerList = rspJson.BannerList[0]
+            bannerList.Url += picParam
+            //处理最新列表
+            let newImageList = rspJson.NewImageList
+            for (let newImage of newImageList) {
+              newImage.Url += picParam
+            }
+            //处理推荐列表
+            let recommendImageList = rspJson.RecommendImageList
+            for (let recommendImage of recommendImageList) {
+              recommendImage.Url += picParam
+            }
+            this.setData({
+              BannerImage: bannerList,
+              NewImageList: newImageList,
+              RecommendImageList: recommendImageList
+            })
+          }).exec()
         }
       }
     })

@@ -5,11 +5,7 @@ const recommend = require('../../common/request/recommend')
 
 Page({
   data: {
-    imgList: [
-      'http://r.ezenlive.cn/ksyunadmin/5a2106a7619be23043.jpeg',
-      'http://r.ezenlive.cn/ksyunadmin/5a21172337f1d91928.jpeg',
-      'http://r.ezenlive.cn/ksyunadmin/5a1e85f50937b91227.jpeg'
-    ]
+    imgList: []
   },
   //事件处理函数
   bindViewTap: function () {
