@@ -5,7 +5,10 @@ const recommend = require('../../common/request/recommend')
 
 Page({
   data: {
-    imgList: []
+    vip: {
+      vip30: '../../images/vip30.png',
+      vip90: '../../images/vip90.png'
+    }
   },
   //事件处理函数
   bindViewTap: function () {

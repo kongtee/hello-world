@@ -1,8 +1,34 @@
 <!--detail.wxml-->
 <view class="container">
   <view class="bg"></view>
-  <view class="userinfo">
-    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <view class="vip-buy">
+    <view class="vip vip90">
+      <image bindtap="bindViewTap" class="vip-buy-icon" src="{{vip.vip90}}" background-size="cover"></image>
+      <view class="vip-buy-info">
+        <view class="vip-buy-name-wrap">
+          <text class="vip-buy-name">90天VIP</text>
+          <view class="vip-buy-discount"><text>5折</text></view>  
+        </view>
+        <view class="vip-buy-price-wrap">
+          <text class="vip-buy-price">￥158</text>
+          <text class="vip-buy-price-real">￥79</text>
+        </view>
+      </view>
+      <view class="vip-buy-per-day"><text>0.88/天</text></view>
+    </view>
+    <view class="vip">
+      <image bindtap="bindViewTap" class="vip-buy-icon" src="{{vip.vip30}}" background-size="cover"></image>
+      <view class="vip-buy-info">
+        <view class="vip-buy-name-wrap">
+          <text class="vip-buy-name">30天VIP</text>
+          <view class="vip-buy-discount"><text>5折</text></view>  
+        </view>
+        <view class="vip-buy-price-wrap">
+          <text class="vip-buy-price">￥58</text>
+          <text class="vip-buy-price-real">￥29</text>
+        </view>
+      </view>
+      <view class="vip-buy-per-day"><text>0.99/天</text></view>
+    </view>
   </view> 
 </view>
