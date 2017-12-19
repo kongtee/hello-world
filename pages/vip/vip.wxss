@@ -1,4 +1,3 @@
-/**personal.wxss**/
 .bg {
   background-color: #DC143C;
   margin: 0;
@@ -38,12 +37,4 @@
   height: 50px;
   line-height: 50px;
   margin-left: 10px;
-}
-
-.userinfo .userinfo-card {
-  width: 150px;
-  height: 132px;
-  position: absolute;
-  right: 0;
-  bottom: 0;
 }

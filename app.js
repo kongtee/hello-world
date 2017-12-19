@@ -10,7 +10,6 @@ App({
     // 登录
     wx.login({
       success: res => {
-        console.log('login1:', res);
         //发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
           url: account.thirdpartywxlogin,
@@ -19,15 +18,10 @@ App({
           },
           method: 'POST',
           success: (res) => {
-            console.log('login:',res.data);
-            // let resData = res.data || {};
-            // if (resData.RspHeader && resData.RspHeader.ErrNo == 200) {
-            //   let rspJson = resData.RspJson || [];
-            //   this.setData({
-            //     BannerList: rspJson.BannerList,
-            //     RecommendImageList: rspJson.RecommendImageList
-            //   });
-            // }
+            console.log('login:',res.data)
+            let rspJson = res && res.data && res.data.RspJson || {}
+            Object.assign(this.globalData.userInfo, rspJson)
+            console.log('userInfo:', this.globalData.userInfo)
           }
         })
       }
@@ -40,13 +34,8 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
+              Object.assign(this.globalData.userInfo, res.userInfo)
+              console.log('userInfo2:', this.globalData.userInfo)
             }
           })
         }
@@ -60,7 +49,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
-    systemInfo: null
+    userInfo: {},
+    systemInfo: {}
   }
 })
