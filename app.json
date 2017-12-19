@@ -1,9 +1,9 @@
 {
   "pages":[
-    "pages/vip/vip",
     "pages/index/index",
     "pages/detail/detail",
     "pages/personal/personal",
+    "pages/vip/vip",
     "pages/logs/logs"
   ],
   "window":{
