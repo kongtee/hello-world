@@ -31,4 +31,9 @@
       <view class="vip-buy-per-day"><text>0.99/天</text></view>
     </view>
   </view> 
+  <view class="vip-description">
+    <view class='vip-desc-title'><text>VIP特权</text></view>
+    <view class='vip-desc-content'><text>可随意观看美女图片</text></view>
+    <view class='vip-desc-content'><text>更多功能敬请期待……</text></view>
+  </view>
 </view>

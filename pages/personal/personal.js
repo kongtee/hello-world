@@ -49,5 +49,10 @@ Page({
         }
       })
     }
+  },
+  onVipTap: function() {
+    wx.navigateTo({
+      url: '../vip/vip'
+    })
   }
 })

@@ -47,3 +47,28 @@
   right: 0;
   bottom: 0;
 }
+
+.func {
+  width:290px;
+  font-size:14px;
+  color: #222;
+}
+
+.func .func-enter {
+  width: 20px;
+  height: 20px;
+}
+
+.func .func-vip {
+  display: flex;
+}
+
+.func .func-vip-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.func .func-vip-name {
+  flex: 1;
+  margin-left: 5px;
+}

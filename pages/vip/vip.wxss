@@ -95,3 +95,21 @@
   text-align: center;
   margin-top: 3px;
 }
+
+.vip-description {
+  color:#666;
+  font-size:13px;
+  width:100%;
+  margin-left:52px;
+}
+
+.vip-description .vip-desc-title {
+  color:#222;
+  font-size:16px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.vip-description .vip-desc-content {
+  line-height:40px;
+}
