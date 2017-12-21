@@ -2,7 +2,7 @@
 <view class="container">
   <view class="bg"></view>
   <view class="vip-buy">
-    <view class="vip vip90">
+    <view class="vip vip90" bindtap="onBuyVip" data-price="2" data-detail="90天会员">
       <image bindtap="bindViewTap" class="vip-buy-icon" src="{{vip.vip90}}" background-size="cover"></image>
       <view class="vip-buy-info">
         <view class="vip-buy-name-wrap">
@@ -16,7 +16,7 @@
       </view>
       <view class="vip-buy-per-day"><text>0.88/天</text></view>
     </view>
-    <view class="vip">
+    <view class="vip" bindtap="onBuyVip" data-price="1" data-detail="30天会员">
       <image bindtap="bindViewTap" class="vip-buy-icon" src="{{vip.vip30}}" background-size="cover"></image>
       <view class="vip-buy-info">
         <view class="vip-buy-name-wrap">

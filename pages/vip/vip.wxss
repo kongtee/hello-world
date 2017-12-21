@@ -15,7 +15,7 @@
   margin:25px auto;
   background-color:#fff;
   border-radius:5px;
-  width:290px;
+  width:650rpx;
   height:180px;
   box-shadow:0 2rpx 5rpx #adadad;
   box-sizing:border-box;

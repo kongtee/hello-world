@@ -43,8 +43,8 @@ Page({
           let Urls = resData.RspJson && resData.RspJson.Urls || [];
           if (!app.globalData.userInfo.Vip) {
             Urls = Urls.slice(0, 3)
+            Urls.push('')
           } 
-          Urls.push('');
           this.setData({
             imgList: Urls
           });
