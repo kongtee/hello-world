@@ -8,7 +8,8 @@ Page({
     vip: {
       vip30: '../../images/vip30.png',
       vip90: '../../images/vip90.png'
-    }
+    },
+    price: 0
   },
   onLoad: function (option) {
     wx.setNavigationBarTitle({
@@ -24,6 +25,7 @@ Page({
       signType: 'MD5',
       paySign: data.Sign,
       success: function (res) {
+        app.globalData.userInfo.ChargeNum = this.data.price
         wx.showToast({
           title: '会员购买成功',
           icon: 'success',
@@ -41,8 +43,6 @@ Page({
     })
   },
   onBuyVip: function(e) {
-    console.log('onBuyVip:', e.currentTarget.dataset)
-    console.log('onBuyVip:', e.currentTarget.dataset.price)
     let data = {
       GoodsDesc: "会员-支付",
       GoodsDetail: e.currentTarget.dataset.detail,
@@ -62,6 +62,9 @@ Page({
         let resData = res.data || {}
         if (resData.RspHeader && resData.RspHeader.ErrNo == 200) {
           let rspJson = resData.RspJson || []
+          this.setData({
+            price: e.currentTarget.dataset.price
+          })
           this.requestPayment(rspJson);
         } else {
           wx.showToast({

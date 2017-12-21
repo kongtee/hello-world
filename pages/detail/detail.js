@@ -15,8 +15,7 @@ Page({
       currentIndex: current
     })
     console.log(this.data.currentIndex)
-    if (!app.globalData.userInfo.Vip && current >= 3) {
-      console.log(this.data.currentIndex)
+    if (app.globalData.userInfo.ChargeNum <= 0 && current >= 3) {
       wx.navigateTo({
         url: '../vip/vip'
       })
@@ -41,7 +40,7 @@ Page({
         let resData = res.data || {};
         if (resData.RspHeader && resData.RspHeader.ErrNo == 200) {
           let Urls = resData.RspJson && resData.RspJson.Urls || [];
-          if (!app.globalData.userInfo.Vip) {
+          if (app.globalData.userInfo.ChargeNum <= 0) {
             Urls = Urls.slice(0, 3)
             Urls.push('')
           } 
