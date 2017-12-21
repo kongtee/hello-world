@@ -5,13 +5,27 @@ const recommend = require('../../common/request/recommend')
 
 Page({
   data: {
-    imgList: []
+    imgList: [],
+    currentIndex: 0
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
+  //滑动事件处理函数
+  onSwiperChange: function (e) {
+    let current = e.detail.current
+    this.setData({
+      currentIndex: current
     })
+    console.log(this.data.currentIndex)
+    if (!app.globalData.userInfo.Vip && current >= 3) {
+      console.log(this.data.currentIndex)
+      wx.navigateTo({
+        url: '../vip/vip'
+      })
+      setTimeout(()=>{
+        this.setData({
+          currentIndex: current - 1
+        })
+      }, 500)
+    }
   },
   onLoad: function (option) {
     console.log('onload:', option);
@@ -26,9 +40,13 @@ Page({
         console.log(res.data);
         let resData = res.data || {};
         if (resData.RspHeader && resData.RspHeader.ErrNo == 200) {
-          let rspJson = resData.RspJson || [];
+          let Urls = resData.RspJson && resData.RspJson.Urls || [];
+          if (!app.globalData.userInfo.Vip) {
+            Urls = Urls.slice(0, 3)
+          } 
+          Urls.push('');
           this.setData({
-            imgList: rspJson.Urls
+            imgList: Urls
           });
         }
       }

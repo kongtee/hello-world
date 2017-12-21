@@ -1,6 +1,6 @@
 <!--detail.wxml-->
 <view class="container">
-    <swiper class="slide-wrap">
+    <swiper class="slide-wrap" bindchange="onSwiperChange"  current="{{currentIndex}}">
       <block wx:for="{{imgList}}" wx:key="{{index}}">
         <swiper-item>
           <image src="{{item}}" class="slide-image" mode="aspectFit" />
