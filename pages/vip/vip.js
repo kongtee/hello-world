@@ -8,8 +8,7 @@ Page({
     vip: {
       vip30: '../../images/vip30.png',
       vip90: '../../images/vip90.png'
-    },
-    price: 0
+    }
   },
   onLoad: function (option) {
     wx.setNavigationBarTitle({
@@ -19,18 +18,24 @@ Page({
   //发起微信支付
   requestPayment: function(data) {
     wx.requestPayment({
-      timeStamp: parseInt(new Date().getTime() / 1000) + '',
+      timeStamp: data.CurTime + '',
       nonceStr: data.NonceStr,
       package: 'prepay_id=' + data.PrepayID,
       signType: 'MD5',
       paySign: data.Sign,
       success: function (res) {
-        app.globalData.userInfo.ChargeNum = this.data.price
+        app.globalData.userInfo.bVip = true
         wx.showToast({
           title: '会员购买成功',
           icon: 'success',
-          duration: 2000
+          duration: 2000,
+          success: function() {
+            wx.switchTab({
+              url: '../index/index'
+            })
+          }
         })
+
       },
       fail: function (res) {
         console.log('会员购买失败:', res.errMsg)
@@ -62,9 +67,6 @@ Page({
         let resData = res.data || {}
         if (resData.RspHeader && resData.RspHeader.ErrNo == 200) {
           let rspJson = resData.RspJson || []
-          this.setData({
-            price: e.currentTarget.dataset.price
-          })
           this.requestPayment(rspJson);
         } else {
           wx.showToast({
