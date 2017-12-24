@@ -5,6 +5,8 @@ const recommend = require('../../common/request/recommend')
 
 Page({
   data: {
+    id: 0,
+    title: '',
     imgList: [],
     currentIndex: 0
   },
@@ -27,8 +29,8 @@ Page({
     }
   },
   onLoad: function (option) {
-    console.log('onload:', option);
-    let id = option.id || '';
+    let id = option.id || ''
+    let title = option.title
     wx.request({
       url: recommend.styleimagelist,
       data: {
@@ -51,7 +53,27 @@ Page({
       }
     })
     wx.setNavigationBarTitle({
-      title: option.title
+      title: title
     })
+    this.setData({
+      id: id,
+      title: title
+    })
+  },
+  onShareAppMessage: function (res) {
+    let title = this.data.title
+    let path = '/pages/detail/detail?id=' + this.data.id + '&title=' + title
+    return {
+      title: title,
+      path: path,
+      success: function (res) {
+        console.log('转发成功')
+        // 转发成功
+      },
+      fail: function (res) {
+        console.log('转发失败')
+        // 转发失败
+      }
+    }
   }
 })

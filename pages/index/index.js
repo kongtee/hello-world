@@ -10,7 +10,7 @@ Page({
     RecommendImageList: []
   },
   enterAlbum: function(e) {
-    let url = '../detail/detail?id=' + e.currentTarget.dataset.id + '&title=' + e.currentTarget.dataset.title;
+    let url = '../detail/detail?id=' + e.currentTarget.dataset.id + '&title=' + e.currentTarget.dataset.title
     wx.navigateTo({
       url: url
     })
@@ -55,5 +55,23 @@ Page({
         }
       }
     })
+  },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log('onShareAppMessage:', res.target)
+    }
+    return {
+      title: '自定义转发标题',
+      path: '/pages/index/index',
+      success: function (res) {
+        console.log('转发成功')
+        // 转发成功
+      },
+      fail: function (res) {
+        console.log('转发失败')
+        // 转发失败
+      }
+    }
   }
 })

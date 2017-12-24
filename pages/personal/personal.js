@@ -54,5 +54,24 @@ Page({
     wx.navigateTo({
       url: '../vip/vip'
     })
+  },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log('onShareAppMessage:', res.target)
+    }
+    return {
+      title: '自定义转发标题',
+      path: '/pages/index/index',
+      imageUrl: 'https://girlstyle.oss-cn-shanghai.aliyuncs.com/12/…jpg?x-oss-process=image/resize,m_lfit,h_640,w_640',
+      success: function (res) {
+        console.log('转发成功')
+        // 转发成功
+      },
+      fail: function (res) {
+        console.log('转发失败')
+        // 转发失败
+      }
+    }
   }
 })

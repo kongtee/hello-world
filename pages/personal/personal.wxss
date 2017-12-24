@@ -54,23 +54,33 @@
   color: #222;
 }
 
+.func .func-wrap {
+  display: flex;
+  border-bottom:1px solid #ccc;
+  padding:8px 0;
+  position: relative
+}
+
+.func .func-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.func .func-name {
+  flex: 1;
+  margin-left: 5px;
+}
+
 .func .func-enter {
   width: 20px;
   height: 20px;
 }
 
-.func .func-vip {
-  display: flex;
-  border-bottom:1px solid #ccc;
-  padding-bottom:8px;
-}
-
-.func .func-vip-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.func .func-vip-name {
-  flex: 1;
-  margin-left: 5px;
+.func .func-share-btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
 }

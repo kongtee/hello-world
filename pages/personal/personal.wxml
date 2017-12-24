@@ -7,10 +7,16 @@
     <image class="userinfo-card" src="../../images/personal-card.png"></image>
   </view>  
   <view class="func">
-    <view class="func-vip" bindtap="onVipTap">
-      <image class="func-vip-icon" src="../../images/financial.png"></image>
-      <text class="func-vip-name">支持我们</text>
+    <view class="func-wrap" bindtap="onVipTap">
+      <image class="func-icon" src="../../images/financial.png"></image>
+      <text class="func-name">支持我们</text>
       <image class="func-enter" src="../../images/enter.png"></image>
+    </view>
+    <view class="func-wrap">
+      <image class="func-icon" src="../../images/share.png"></image>
+      <text class="func-name">与民同乐</text>
+      <image class="func-enter" src="../../images/enter.png"></image>
+      <button class="func-share-btn" open-type="share"></button>
     </view>
   </view>
 </view>
