@@ -5,7 +5,8 @@ const recommend = require('../../common/request/recommend')
 
 Page({
   data: {
-    userInfo: {}
+    userInfo: {},
+    qrcodeClass: 'hidden'
   },
   enterAlbum: function(e) {
     let url = '../detail/detail?id=' + e.currentTarget.dataset.id + '&title=' + e.currentTarget.dataset.title;
@@ -73,5 +74,57 @@ Page({
         // 转发失败
       }
     }
+  },
+  onQRCodeTap: function() {
+    this.setData({
+      qrcodeClass: ''
+    })
+  },
+  onMaskTap: function(event) {
+    let id = event.target.id
+    if (id === 'mask' || id === 'maskClose') {
+      this.setData({
+        qrcodeClass: 'hidden'
+      })
+    }
+  },
+  onLongPressQRCode: function() {
+    wx.showActionSheet({
+      itemList: ['保存图片'],
+      success(res) {
+        if (res.tapIndex === 0) {
+          //下载要保存的图片
+          wx.downloadFile({
+            url: 'https://girlstyle.oss-cn-shanghai.aliyuncs.com/static/erweima.png',
+            success(res) {
+              //保存到本地相册
+              wx.saveImageToPhotosAlbum({
+                filePath: res.tempFilePath,
+                success(res) {
+                  wx.showToast({
+                    title: '已保存到本地相册'
+                  })
+                },
+                fail(res) {
+                  wx.showToast({
+                    title: res.errMsg
+                  })
+                }
+              })
+            },
+            fail(res) {
+              wx.showToast({
+                title: res.errMsg
+              })
+            }
+          })
+        }
+      },
+      fail(res) {
+        wx.showToast({
+          title: res.errMsg
+        })
+      }
+    })
   }
 })

@@ -57,7 +57,7 @@
 .func .func-wrap {
   display: flex;
   border-bottom:1px solid #ccc;
-  padding:8px 0;
+  padding:20px 0;
   position: relative
 }
 
@@ -83,4 +83,43 @@
   top: 0;
   bottom: 0;
   opacity: 0;
+}
+
+.mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mask.hidden {
+  display: none;
+}
+
+.mask .qrcode-wrap {
+  width: 540rpx;
+  height: 540rpx;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color:#fff;
+}
+
+.mask .qrcode-close {
+  position: absolute;
+  right: -12px;
+  top: -12px;
+  width: 24px;
+  height: 24px;
+}
+
+.mask .qrcode-image {
+  width: 500rpx;
+  height: 500rpx;
+  margin: 20rpx;
 }
