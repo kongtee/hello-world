@@ -6,7 +6,8 @@ const recommend = require('../../common/request/recommend')
 Page({
   data: {
     userInfo: {},
-    qrcodeClass: 'hidden'
+    qrcodeClass: 'hidden',
+    hasAuth: app.globalData.hasAuth
   },
   enterAlbum: function(e) {
     let url = '../detail/detail?id=' + e.currentTarget.dataset.id + '&title=' + e.currentTarget.dataset.title;
@@ -23,7 +24,6 @@ Page({
       },
       method: 'POST',
       success: (res) => {
-        console.log(res.data);
         let resData = res.data || {};
         if (resData.RspHeader && resData.RspHeader.ErrNo == 200) {
           let rspJson = resData.RspJson || [];
@@ -34,8 +34,7 @@ Page({
         }
       }
     })
-
-    if (app.globalData.userInfo) {
+    if (this.data.hasAuth) {
       this.setData({
         userInfo: app.globalData.userInfo
       })
@@ -45,11 +44,22 @@ Page({
         success: res => {
           app.globalData.userInfo = res.userInfo
           this.setData({
-            userInfo: res.userInfo
+            userInfo: res.userInfo,
+            hasAuth: true
           })
+        },
+        fail: res => {
+          console.log('res.userInfo:', res)
         }
       })
     }
+  },
+  getUserInfo: function (e) {
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasAuth: true
+    })
   },
   onVipTap: function() {
     wx.navigateTo({
@@ -88,6 +98,7 @@ Page({
       })
     }
   },
+  //长按二维码
   onLongPressQRCode: function() {
     wx.showActionSheet({
       itemList: ['保存图片'],

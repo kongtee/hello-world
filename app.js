@@ -20,10 +20,19 @@ App({
           success: (res) => {
             console.log('login:',res.data)
             let rspJson = res && res.data && res.data.RspJson || {}
+            if (!this.globalData.userInfo) {
+              this.globalData.userInfo = {}
+            }
             Object.assign(this.globalData.userInfo, rspJson)
             console.log('userInfo:', this.globalData.userInfo)
+          },
+          fail: res => {
+            console.log('userInfo:', res)
           }
         })
+      },
+      fail: res => {
+        console.log('wx.login:', res)
       }
     })
     // 获取用户信息
@@ -34,6 +43,10 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
+              this.globalData.hasAuth = true;
+              if (!this.globalData.userInfo) {
+                this.globalData.userInfo = {}
+              }
               Object.assign(this.globalData.userInfo, res.userInfo)
               console.log('userInfo2:', this.globalData.userInfo)
             }
@@ -49,7 +62,8 @@ App({
     })
   },
   globalData: {
-    userInfo: {},
+    userInfo: null,
+    hasAuth: false,
     systemInfo: {}
   }
 })
