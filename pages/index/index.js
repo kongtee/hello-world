@@ -58,7 +58,7 @@ Page({
   },
   onShareAppMessage: function (res) {
     return {
-      title: '一大波人正在等你……',
+      title: '一大波美女正在等你……',
       path: '/pages/index/index',
       success: function (res) {
         console.log('转发成功')

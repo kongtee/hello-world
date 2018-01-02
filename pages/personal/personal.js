@@ -78,7 +78,7 @@ Page({
       console.log('onShareAppMessage:', res.target)
     }
     return {
-      title: '一大波人正在等你……',
+      title: '一大波美女正在等你……',
       path: '/pages/index/index',
       imageUrl: 'https://girlstyle.oss-cn-shanghai.aliyuncs.com/new/01/01.jpg?x-oss-process=image/resize,m_lfit,h_640,w_640',
       success: function (res) {
