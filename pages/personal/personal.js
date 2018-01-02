@@ -78,9 +78,9 @@ Page({
       console.log('onShareAppMessage:', res.target)
     }
     return {
-      title: '自定义转发标题',
+      title: '一大波人正在等你……',
       path: '/pages/index/index',
-      imageUrl: 'https://girlstyle.oss-cn-shanghai.aliyuncs.com/12/…jpg?x-oss-process=image/resize,m_lfit,h_640,w_640',
+      imageUrl: 'https://girlstyle.oss-cn-shanghai.aliyuncs.com/new/01/01.jpg?x-oss-process=image/resize,m_lfit,h_640,w_640',
       success: function (res) {
         console.log('转发成功')
         // 转发成功

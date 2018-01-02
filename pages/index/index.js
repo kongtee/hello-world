@@ -57,12 +57,8 @@ Page({
     })
   },
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log('onShareAppMessage:', res.target)
-    }
     return {
-      title: '自定义转发标题',
+      title: '一大波人正在等你……',
       path: '/pages/index/index',
       success: function (res) {
         console.log('转发成功')
