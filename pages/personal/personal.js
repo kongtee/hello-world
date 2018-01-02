@@ -42,7 +42,10 @@ Page({
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
-          app.globalData.userInfo = res.userInfo
+          if (!app.globalData.userInfo) {
+            app.globalData.userInfo = {}
+          }
+          Object.assign(app.globalData.userInfo, res.userInfo)
           this.setData({
             userInfo: res.userInfo,
             hasAuth: true
@@ -55,7 +58,10 @@ Page({
     }
   },
   getUserInfo: function (e) {
-    app.globalData.userInfo = e.detail.userInfo
+    if (!app.globalData.userInfo) {
+      app.globalData.userInfo = {}
+    }
+    Object.assign(app.globalData.userInfo, e.detail.userInfo)
     this.setData({
       userInfo: e.detail.userInfo,
       hasAuth: true
