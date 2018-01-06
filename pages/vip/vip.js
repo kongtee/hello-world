@@ -8,11 +8,15 @@ Page({
     vip: {
       vip30: '../../images/vip30.png',
       vip90: '../../images/vip90.png'
-    }
+    },
+    support: false
   },
   onLoad: function (option) {
+    this.setData({
+      support: app.globalData.userInfo.PayControl
+    })
     wx.setNavigationBarTitle({
-      title: '会员购买'
+      title: '支持我们'
     })
   },
   //发起微信支付
@@ -26,7 +30,7 @@ Page({
       success: function (res) {
         app.globalData.userInfo.bVip = true
         wx.showToast({
-          title: '会员购买成功',
+          title: '支持成功',
           icon: 'success',
           duration: 2000,
           success: function() {
@@ -38,9 +42,8 @@ Page({
 
       },
       fail: function (res) {
-        console.log('会员购买失败:', res.errMsg)
         wx.showToast({
-          title: '会员购买失败',
+          title: '支持未成功',
           icon: 'loading',
           duration: 2000
         })
@@ -77,5 +80,27 @@ Page({
         }
       }
     })
+  },
+  /**
+   * 分享消息
+   */
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log('onShareAppMessage:', res.target)
+    }
+    return {
+      title: '一大波美女正在等你……',
+      path: '/pages/index/index',
+      imageUrl: 'https://girlstyle.oss-cn-shanghai.aliyuncs.com/new/01/01.jpg?x-oss-process=image/resize,m_lfit,h_640,w_640',
+      success: function (res) {
+        console.log('转发成功')
+        // 转发成功
+      },
+      fail: function (res) {
+        console.log('转发失败')
+        // 转发失败
+      }
+    }
   }
 })
